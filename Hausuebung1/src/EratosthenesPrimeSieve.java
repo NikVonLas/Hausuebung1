@@ -1,21 +1,21 @@
+import java.util.ArrayList;
+
 public class EratosthenesPrimeSieve implements EratosthenesInterface {
     public int limit;
-
-    public EratosthenesPrimeSieve(int limit) {
-        this.limit = limit;
-    }
+    public ArrayList<Integer> primesList = new ArrayList<>();
+    public ArrayList<Integer> numbersList = new ArrayList<>();
 
     @Override
     public boolean isPrime(int input) {
-        if (input <= 1) {
-            return false;
-        }
-        for (int i = 2; i <= Math.sqrt(input); i++) {
-            if (input % i == 0) {
-                return false;
+        upToo(numbersList);
+        for (int i = 0; i < numbersList.size(); i++) {
+            if (numbersList.get(i)>1&& numbersList.get(i)%i == 0 ){
+                numbersList.remove(numbersList.get(i));
+                System.out.println(numbersList);
+                return true;
             }
         }
-        return false;
+return false;
     }
 
     @Override
@@ -23,4 +23,12 @@ public class EratosthenesPrimeSieve implements EratosthenesInterface {
 
     }
 
+    public EratosthenesPrimeSieve(int limit) {
+        this.limit = limit;
+    }
+    public void upToo(ArrayList<Integer>list){
+        for (int i = 0; i < limit; i++) {
+            list.add(i);
+        }
+    }
 }
