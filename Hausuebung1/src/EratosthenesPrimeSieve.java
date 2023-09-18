@@ -9,13 +9,21 @@ public class EratosthenesPrimeSieve implements EratosthenesInterface {
     public boolean isPrime(int input) {
         upToo(numbersList);
         for (int i = 0; i < numbersList.size(); i++) {
-            if (numbersList.get(i)>1&& numbersList.get(i)%i == 0 ){
+            if (numbersList.get(i)==2&& numbersList.get(i)%2 == 0 ){
                 numbersList.remove(numbersList.get(i));
                 System.out.println(numbersList);
-                return true;
+
+            } else if (numbersList.get(i)>2) {
+                for (int j = 0; j < numbersList.size(); j++) {
+                    if(numbersList.get(i)%numbersList.get(j)== 0){
+                        numbersList.remove(j);
+                    }
+                }
+
             }
         }
-return false;
+        return true;
+
     }
 
     @Override
